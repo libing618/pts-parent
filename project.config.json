@@ -1,0 +1,10 @@
+{
+	"miniprogramRoot": "./client",
+	"qcloudRoot": "./server",
+	"setting": {
+		"newFeature": true
+	},
+	"appid": "wx18e4eaa7777903af",
+	"projectname": "pts-parent",
+	"condition": {}
+}

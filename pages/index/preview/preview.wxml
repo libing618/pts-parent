@@ -1,0 +1,2 @@
+<import src="../../../libs/weimport.wxml" />
+<template is="waiting"/>

@@ -1,0 +1,38 @@
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">孩子的班级</view>
+        <view class="page__desc">令德中学1604班 共有58位学生 12位教师</view>
+        <view class="page__desc">令德中学2016届交响乐团 共有98位学生 2位教师</view>
+    </view>
+    <view class="page__bd">
+        <view class="weui-grids">
+            <block wx:for="{{grids}}" wx:key="{{index}}">
+                <navigator url="{{item.tourl}}" class="weui-grid" hover-class="weui-grid_active">
+                    <image class="weui-grid__icon" src="{{item.mIcon}}" />
+                    <view class="weui-grid__label">{{item.mName}}</view>
+                </navigator>
+            </block>
+        </view>
+    </view>
+
+    <scroll-view class="article-scroll" scroll-y="true">
+        <view class="weui-article">
+        <view class="weui-article__h1">课程表</view>
+        <view class="weui-grids">
+            <block wx:for="{{course1}}" wx:key="{{index}}">
+                <view class="weui-grid weui-grid__label">{{item}}</view>
+            </block>
+        </view>
+            <view class="weui-article__img">午休</view>
+        <view class="weui-grids">
+            <block wx:for="{{course2}}" wx:key="{{index}}">
+                <view class="weui-grid weui-grid__label">{{item}}</view>
+            </block>
+        </view>
+        <view class="weui-article__h1">本机资料 58份</view>
+        <view class="weui-article__h1">学习记录 108份</view>
+        <view class="weui-article__h1">成长档案 580份</view>
+        <view class="weui-article__h1">通讯录 1800人</view>
+        </view>
+    </scroll-view>
+</view>

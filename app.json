@@ -1,0 +1,67 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/index/preview/preview",
+    "pages/index/classnotes/classnotes",
+    "pages/index/lessonsummary/lessonsummary",
+    "pages/index/homework/homework",
+    "pages/index/tageplan/tageplan",
+    "pages/index/planimplementation/planimplementation",
+    "pages/increase/increase",
+    "pages/increase/hwanalysis/hwanalysis",
+    "pages/increase/performance/performance",
+    "pages/increase/testresults/testresults",
+    "pages/increase/grasppoints/grasppoints",
+    "pages/increase/difficult/difficult",
+    "pages/increase/emphases/emphases",
+    "pages/increase/disabuse/disabuse",
+    "pages/increase/effectanalysis/effectanalysis",
+    "pages/communicate/communicate",
+    "pages/communicate/receivenotification/receivenotification",
+    "pages/communicate/claschat/claschat",
+    "pages/communicate/toteacher/toteacher",
+    "pages/communicate/resourcesharing/resourcesharing",
+    "pages/parent/parent",
+    "pages/parent/signup/signup",
+    "pages/parent/myclass/myclass",
+    "pages/parent/addressbook/addressbook",
+    "pages/parent/downloadmanagement/downloadmanagement",
+    "pages/parent/learningrecord/learningrecord",
+    "pages/parent/growthprofile/growthprofile",
+    "pages/artedit/artedit",
+    "pages/artview/artview"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "家教生辅助教学系统家长端",
+    "navigationBarTextStyle":"black",
+    "backgroundColor": "#f8f8f8",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "selectedColor": "#FF0033",
+    "list": [{
+      "pagePath": "pages/index/index",
+      "text": "学习",
+      "iconPath": "images/index.png",
+      "selectedIconPath": "images/index_l.png"
+    },{
+      "pagePath": "pages/increase/increase",
+      "text": "提高",
+      "iconPath": "images/increase.png",
+      "selectedIconPath": "images/increase_l.png"
+    },{
+      "pagePath": "pages/communicate/communicate",
+      "text": "沟通",
+      "iconPath": "images/communicate.png",
+      "selectedIconPath": "images/communicate_l.png"
+    },{
+      "pagePath": "pages/parent/parent",
+      "text": "我的",
+      "iconPath": "images/parent.png",
+      "selectedIconPath": "images/parent_l.png"
+    }
+    ]
+  }
+}

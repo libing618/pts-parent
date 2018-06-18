@@ -1,0 +1,29 @@
+<template name="course">
+    <block wx:for-items="{{article}}" wx:key="{{updatedAt}}">
+        <navigator url="../artview/artview?{{item.objectId}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+            <view class="weui-cell__hd">
+                <image src="{{item.thumbnail}}" class="weui-thumb"></image>
+            </view>
+            <view class="weui-cell__bd">{{item.name}}</view>
+            <view class="weui-cell__ft weui-cell__ft_in-access">{{item.title}}</view>
+        </navigator>
+    </block>
+</template>
+<template name="waiting">
+<view class="page">
+    <view class="page__hd">
+        <text class="page__title">\n</text>
+        <text class="page__title">\n</text>
+        <text class="page__title">\n</text>
+        <text class="page__title">\n</text>
+        <view class="page__title">本模块正在加紧开发中，请等待。</view>
+        <text class="page__title">\n</text>
+        <text class="page__title">\n</text>
+    </view>
+    <view class="page__bd">
+        <view class="weui-article__img">
+            <image class="weui-article__img" src="../../../images/timg.jpg" mode="aspectFit" />
+        </view>
+    </view>
+</view>
+</template>

@@ -1,0 +1,36 @@
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">消息列表</view>
+        <view class="page__desc">待签收通知  0条</view>
+    </view>
+    <view class="page__bd">
+        <view class="weui-grids">
+            <block wx:for="{{grids}}" wx:key="{{index}}">
+                <navigator url="{{item.tourl}}" class="weui-grid" hover-class="weui-grid_active">
+                    <image class="weui-grid__icon" src="{{item.mIcon}}" />
+                    <view class="weui-grid__label">{{item.mName}}</view>
+                </navigator>
+            </block>
+        </view>
+    </view>
+    <view class="page__title">资源目录</view>
+    <scroll-view class="article-scroll" scroll-y="true">
+        <view class="weui-article">
+            <view class="weui-article__h1">语文</view>
+            <view class="weui-article__h2">共230篇</view>
+                    <view class="weui-article__p">已读228篇</view>
+                    <view class="weui-article__img">
+                        <image class="weui-article__img" src="../../images/index.png" mode="aspectFit" style="height: 180px" />
+                                    </view>
+            <view class="weui-article__h1">英语</view>
+                <view class="weui-article__h2">共388篇</view>
+                <view class="weui-article__section">
+                    <view class="weui-article__p">已读318篇</view>
+                    <view class="weui-article__img">
+                        <image class="weui-article__img" src="../../images/increase.png" mode="aspectFit" style="height: 180px" />
+                    </view>
+                </view>
+            
+        </view>
+    </scroll-view>
+</view>

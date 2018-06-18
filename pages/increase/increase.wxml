@@ -1,0 +1,27 @@
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">今日待完成任务列表</view>
+        <view class="page__desc">重点解析2份  难点任务1份 自我提高计划3条</view>
+    </view>
+    <view class="page__bd">
+        <view class="weui-grids">
+            <block wx:for="{{grids}}" wx:key="{{index}}">
+                <navigator url="{{item.tourl}}" class="weui-grid" hover-class="weui-grid_active">
+                    <image class="weui-grid__icon" src="{{item.mIcon}}" />
+                    <view class="weui-grid__label">{{item.mName}}</view>
+                </navigator>
+            </block>
+        </view>
+    </view>
+    <view class="page__title">提升任务</view>
+    <scroll-view class="article-scroll" scroll-y="true">
+        <view class="weui-article">
+            <view class="weui-article__h1">重点解析</view>
+            <view class="weui-article__h3">共360份 今日应学习5份 已完成3份</view>
+            <view class="weui-article__h1">难点任务</view>
+            <view class="weui-article__h3">共185份 今日应掌握3份 已完成2份</view>
+            <view class="weui-article__h1">提高计划</view>
+            <view class="weui-article__h3">共60条 今日应实现6条 已完成3条</view>
+        </view>
+    </scroll-view>
+</view>
