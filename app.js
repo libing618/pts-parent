@@ -4,7 +4,6 @@ App({
     user: null,
     sysinfo: null
   },
-  wmenu: [],
   logData: [],
   aData: {
     artupdateAt :{
@@ -88,6 +87,7 @@ App({
         }
       })
     }
+    wx.stopBackgroundAudio()
   },
 
   onError: function(msg) {

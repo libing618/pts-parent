@@ -1,10 +1,28 @@
 {
-	"miniprogramRoot": "./client",
-	"qcloudRoot": "./server",
+	"description": "项目配置文件。",
 	"setting": {
+		"urlCheck": true,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
 		"newFeature": true
 	},
+	"compileType": "miniprogram",
+	"libVersion": "2.1.0",
 	"appid": "wx18e4eaa7777903af",
 	"projectname": "pts-parent",
-	"condition": {}
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": []
+		}
+	}
 }
