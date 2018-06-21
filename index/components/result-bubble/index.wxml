@@ -20,7 +20,7 @@
         class="edit-icon"
         wx:if="{{editShow}}"
         data-item="{{item}}"
-        url="{{'/pages/edit/edit?content='+item.text+'&index='+index}}">
+        url="{{'/index/components/edit/edit?content='+item.text+'&index='+index}}">
           <image class="edit-icon-img" src="{{edit_icon_path}}" ></image>
       </navigator>
     </view>
@@ -36,4 +36,3 @@
     </view>
   </view>
 </view>
-
