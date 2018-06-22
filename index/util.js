@@ -2,8 +2,8 @@ const COS = require('../libs/cos-wx-sdk-v5')
 var cos = new COS({
   getAuthorization: function (params, callback) {//获取签名 必填参数
     var authorization = COS.getAuthorization({
-      SecretId: '',
-      SecretKey: '',
+      SecretId: require('./confqcloud').qcloudId1,
+      SecretKey: require('./confqcloud').qcloudKey1,
       Method: params.Method,
       Key: params.Key
     });
@@ -22,13 +22,10 @@ const formatTime = date => {
 }
 
 function recordTime(date) {
-
   var month = date.getMonth() + 1
   var day = date.getDate()
-
   var hour = date.getHours()
   var minute = date.getMinutes()
-
   return [month, day].map(formatNumber).join('/') + ' ' + [hour, minute].map(formatNumber).join(':')
 }
 
@@ -53,5 +50,9 @@ module.exports = {
       FilePath: filePath,
       onProgress: function (info) { console.log(JSON.stringify(info)) }
     }, requestCallback);
+  },
+
+  qcRecognition: function(uId,faceUrl){       //人脸检索
+
   }
 }
