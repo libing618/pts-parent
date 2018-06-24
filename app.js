@@ -15,17 +15,25 @@ App({
   },
 
   onLaunch: function () {
-    this.globalData.sysinfo = wx.getSystemInfoSync();                     //读设备信息
-    this.aData = wx.getStorageSync('aData') || this.aData;              //读文章的缓存
+    var that = this;
+    that.globalData.sysinfo = wx.getSystemInfoSync();                     //读设备信息
+    that.aData = wx.getStorageSync('aData') || this.aData;              //读文章的缓存
+    wx.getStorage({
+      key: 'loginInfo',
+      success: (res) => {
+        that.globalData.user = res.data
+      },
+      fail: (res) => {
+        that.globalData.user = null
+      }
+    })
     wx.getStorage({
       key: 'history',
       success: (res) => {
-          this.globalData.history = res.data
+        that.globalData.history = res.data
       },
       fail: (res) => {
-          console.log("get storage failed")
-          console.log(res)
-          this.globalData.history = []
+        that.globalData.history = []
       }
     })
   },
@@ -33,24 +41,20 @@ App({
   getRecordAuth: function() {
     wx.getSetting({
       success(res) {
-        console.log("succ")
-        console.log(res)
         if (!res.authSetting['scope.record']) {
           wx.authorize({
             scope: 'scope.record',
-            success() {
-                // 用户已经同意小程序使用录音功能，后续调用 wx.startRecord 接口不会弹窗询问
-                console.log("succ auth")
+            success() {    // 用户已经同意小程序使用录音功能，后续调用 wx.startRecord 接口不会弹窗询问
+              console.log("succ auth")
             }, fail() {
-                console.log("fail auth")
+              console.log("fail auth")
             }
           })
         } else {
           console.log("record has been authed")
         }
       }, fail(res) {
-          console.log("fail")
-          console.log(res)
+        console.log("fail:"+res)
       }
     })
   },

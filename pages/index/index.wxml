@@ -1,35 +1,37 @@
+<import src="../../libs/weimport.wxml" />
 <view class="page">
-    <view class="page__bd page__bd_spacing">
-        <swiper class="swiper_box" indicator-dots="{{false}}" autoplay="{{true}}">
-            <block wx:for="{{articles[0]}}" wx:key="{{index}}">
-                <swiper-item>  
-                    <navigator url="../artview/artview?{{item.objectId}}">
-                        <image src="{{artdata[item].thumbnail}}" class="swimage"></image>
-                        <view class="swtext">{{artdata[item].title}}</view>
-                    </navigator>
-                </swiper-item>
-            </block>
-        </swiper>
-        <view class="weui-grids">
-            <block wx:for="{{grids}}" wx:key="{{index}}">
-                <navigator url="{{item.tourl}}" class="weui-grid" hover-class="weui-grid_active">
-                    <image class="weui-grid__icon" src="{{item.mIcon}}"></image>
-                    <view class="weui-grid__label">{{item.mName}}</view>
-                </navigator>
-            </block>
+  <view class="page__hd">
+    <swiper class="swiper_box" indicator-dots="{{false}}" autoplay="{{true}}">
+      <block wx:for="{{articles[0]}}" wx:key="{{index}}">
+        <swiper-item>
+          <navigator url="../artview/artview?{{item.objectId}}">
+            <image src="{{artdata[item].thumbnail}}" class="swimage"></image>
+            <view class="swtext">{{artdata[item].title}}</view>
+          </navigator>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+
+  <view wx:if="{{unAuthorize}}">
+    <button open-type="getUserInfo" bindgetuserinfo="userInfoHandler">我要使用这个平台</button>
+  </view>
+  <view wx:else>
+    <template is="showgrids" data="{{grids}}"/>
+  </view>
+  <view class="page__bd page__bd_spacing">
+    <block wx:for="{{articles[1]}}" wx:key="{{index}}">
+      <navigator url="../artview/artview?{{item.objectId}}">
+        <view class="weui-media-box weui-media-box_appmsg" hover="true" hover-class="weui-cell_active">
+          <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+            <image class="weui-media-box__thumb" src="{{artdata[item].thumbnail}}" background-size="cover"></image>
+          </view>
+          <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+            <view class="weui-media-box__title">{{artdata[item].name}}</view>
+            <view class="weui-media-box__desc">{{artdata[item].title}}</view>
+          </view>
         </view>
-        <block wx:for="{{articles[1]}}" wx:key="{{index}}">
-            <navigator url="../artview/artview?{{item.objectId}}">          
-                <view class="weui-media-box weui-media-box_appmsg" hover="true" hover-class="weui-cell_active">
-                    <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
-                        <image class="weui-media-box__thumb" src="{{artdata[item].thumbnail}}" background-size="cover"></image>
-                    </view>
-                    <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-                        <view class="weui-media-box__title">{{artdata[item].name}}</view>
-                        <view class="weui-media-box__desc">{{artdata[item].title}}</view>
-                    </view>
-                </view>
-            </navigator>
-        </block>
-    </view>
+      </navigator>
+    </block>
+  </view>
 </view>
