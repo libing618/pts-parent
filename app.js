@@ -1,41 +1,55 @@
+const {lcRequest} = require('model/accessData')
 App({
-  globalData:{
-    history: [],
-    user: null,
-    sysinfo: null
-  },
+  history: [],
+  roleData: require('globaldata.js').roleData,
+  fData: require('./model/procedureclass'),
   logData: [],
-  aData: {
-    artupdateAt :{
-      "artlastdate":0,
-      "artnowdate":0
-      },
-    articles: [ [], [], [] ],
-    artdata: {}
-  },
+  mData: require('globaldata.js').mData,                          //以objectId为key的数据记录
+  aData: require('globaldata.js').aData,              //读数据记录的缓存
 
   onLaunch: function () {
     var that = this;
-    that.globalData.sysinfo = wx.getSystemInfoSync();                     //读设备信息
-    that.aData = wx.getStorageSync('aData') || this.aData;              //读文章的缓存
-    wx.getStorage({
-      key: 'loginInfo',
-      success: (res) => {
-        that.globalData.user = res.data
-      },
-      fail: (res) => {
-        that.globalData.user = null
+    ['roleData', 'mData', 'aData'].forEach(dataName=>{
+      wx.getStorage({
+        key: dataName,
+        success: function (res) {
+          if (res.data) {that[dataName] = res.data};
+        }
+      })
+    });
+    wx.getSystemInfo({                     //读设备信息
+      success: function (res) {
+        that.sysinfo = res;
+        let sdkvc = res.SDKVersion.split('.');
+        let sdkVersion = parseFloat(sdkvc[0] + '.' + sdkvc[1] + sdkvc[2]);
+        if (sdkVersion < 2.09) {
+          wx.showModal({
+            title: '提示',
+            content: '当前微信版本过低，无法正常使用，请升级到最新微信版本后重试。',
+            compressed(res) { setTimeout(function () { wx.navigateBack({ delta: 1 }) }, 2000); }
+          })
+        };
       }
-    })
-    wx.getStorage({
-      key: 'history',
-      success: (res) => {
-        that.globalData.history = res.data
-      },
-      fail: (res) => {
-        that.globalData.history = []
+    });
+    wx.getNetworkType({
+      success: function (res) {
+        if (res.networkType == 'none') {
+          that.netState = false;
+          wx.showToast({ title: '请检查网络！' });
+        } else {
+          that.netState = true;
+          lcRequest('writers', ).then(myip => { that.sysinfo.userip = myip; })
+        }
       }
-    })
+    });
+    wx.onNetworkStatusChange(res => {
+      if (!res.isConnected) {
+        that.netState = false;
+        wx.showToast({ title: '请检查网络！' });
+      } else {
+        that.netState = true;
+      }
+    });
   },
   // 权限询问
   getRecordAuth: function() {
@@ -80,7 +94,8 @@ App({
           {
             let loguser = AV.Object.extend('loguser');       //有网络则上传操作日志
             let userlog = new loguser();
-            userlog.set('userObjectId',that.globalData.user.objectId);
+            userlog.set('userObjectId',that.roleData.user.uId);
+            userlog.set('wxappNumber',2);
             userlog.set('workRecord',logData);
             userlog.save().then( resok =>{
               wx.removeStorageSync('loguser');              //上传成功清空日志缓存

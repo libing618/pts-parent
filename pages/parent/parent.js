@@ -8,13 +8,13 @@ Page({
             '数学','语文','英语','数学','音乐'],
     course2:['英语','地理','生物','历史','美术',
             '生物','数学','语文','英语','体育'],
-    scrollHeight: app.globalData.sysinfo.windowHeight-380
+    scrollHeight: app.sysinfo.windowHeight-380
    },
   onLoad:function(options){
     var that=this ;
     that.setData({
       grids: app.wmenu[3]
-    }); 
+    });
   },
   onReady:function(){
     // 页面渲染完成

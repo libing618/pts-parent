@@ -4,7 +4,7 @@
     <swiper class="swiper_box" indicator-dots="{{false}}" autoplay="{{true}}">
       <block wx:for="{{articles[0]}}" wx:key="{{index}}">
         <swiper-item>
-          <navigator url="../artview/artview?{{item.objectId}}">
+          <navigator url="pages/vprocedure/vprocedure?{{item.objectId}}">
             <image src="{{artdata[item].thumbnail}}" class="swimage"></image>
             <view class="swtext">{{artdata[item].title}}</view>
           </navigator>
@@ -21,7 +21,7 @@
   </view>
   <view class="page__bd page__bd_spacing">
     <block wx:for="{{articles[1]}}" wx:key="{{index}}">
-      <navigator url="../artview/artview?{{item.objectId}}">
+      <navigator url="pages/vprocedure/vprocedure?{{item.objectId}}">
         <view class="weui-media-box weui-media-box_appmsg" hover="true" hover-class="weui-cell_active">
           <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
             <image class="weui-media-box__thumb" src="{{artdata[item].thumbnail}}" background-size="cover"></image>

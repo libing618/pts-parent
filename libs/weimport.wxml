@@ -357,7 +357,7 @@
 
 <template name="course">
   <block wx:for-items="{{article}}" wx:key="{{updatedAt}}">
-    <navigator url="../artview/artview?{{item.objectId}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+    <navigator url="pages/vprocedure/vprocedure?{{item.objectId}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
       <view class="weui-cell__hd">
         <image src="{{item.thumbnail}}" class="weui-thumb"></image>
       </view>

@@ -1,4 +1,4 @@
-const { openWxLogin } = require('../../libs/accessData');
+const { openWxLogin } = require('../../model/accessData');
 var app = getApp();
 Page({
   data:{
@@ -16,7 +16,7 @@ Page({
           if (authSetting['scope.userInfo']) {
             wx.checkSession({
               success: function(){    //session_key 未过期，并且在本生命周期一直有效
-                resolve(app.globalData.user);
+                resolve(app.roleDatauser);
               },
               fail: function(){    // session_key 已经失效，需要重新执行登录流程
                 resolve(false);
@@ -33,7 +33,7 @@ Page({
           resolve(true)
         } else {
           openWxLogin().then(wxId => {      //登录
-            app.globalData.user = wxId;
+            app.roleData.user = wxId;
             resolve(true);
           }).catch(error => { reject(error) })
         };

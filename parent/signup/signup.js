@@ -1,4 +1,3 @@
-const AV = require('../../../libs/leancloud-storage.js');
 var app = getApp()
 Page({
   data:{
@@ -13,7 +12,7 @@ Page({
 	},
 
   editenable: function(e) {                         //点击条目进入编辑或选择操作
-		this.setData({activeIndex : app.globalData.user.pMobile ? e.currentTarget.id : "0" })
+		this.setData({activeIndex : app.roleData.user.pMobile ? e.currentTarget.id : "0" })
   },
 
   fswcheck: function(e) {                         //“同意条款”选择
@@ -24,7 +23,7 @@ getvcode: function(e) {							//验证号码是否符合规则并增加学生
 		var phone = e.detail.value.inputmpn;
 		var vcode = e.detail.value.inputvc;
 		var pRelation = e.detail.value.inputpr;
-		if (e.detail.value.fswcheck.checked) {	
+		if (e.detail.value.fswcheck.checked) {
 			if ( phone && /^1\d{10}$/.test(phone) ) {                  //结束输入后验证手机号格式
 				this.data.user.pMobile = phone;
 			}else{
@@ -88,7 +87,7 @@ getvcode: function(e) {							//验证号码是否符合规则并增加学生
 	fSeatch.select(['sName']);
 	fSeatch.find().then(results=>{
 	  if (results.length==0){                      //申请班级名称无重复
-		reqData.headId = app.globalData.user.objectId;            //申请设立班级班主任的ID
+		reqData.headId = app.roleData.user.objectId;            //申请设立班级班主任的ID
 //		let approveclass= new AV.Query('liucheng').get('587c6a494eb00200577be0ec').then((appclass)=>{return appclass.toJSON});
 		var fmakeUnit=new AV.Objict.extend('sengpi');        //申请设立班级
 		fmakeUnit.set('dUseFlow','587c6a494eb00200577be0ec');                //流程ID为新建班级
@@ -99,7 +98,7 @@ getvcode: function(e) {							//验证号码是否符合规则并增加学生
 		fmakeUnit.set('dObject',reqData);
 		var acl = new AV.ACL();      // 新建一个 ACL 实例
 		acl.setReadAccess('58b83c7dd506d200511ba497',true);
-		acl.setWriteAccess(app.globalData.user.objectId,true);
+		acl.setWriteAccess(app.roleData.user.objectId,true);
 		fmakeUnit.setACL(acl);         // 将 ACL 实例赋予fmakeUnit对象
 		fmakeUnit.save().then(function() {
 			wx.showToast({title: '班级设置流程已提交,请查询审批结果。'}) // 保存成功
@@ -115,8 +114,8 @@ getvcode: function(e) {							//验证号码是否符合规则并增加学生
   onLoad: function () {
 	var that = this;
 	that.setData({		    		// 获得当前用户
-	  user: app.globalData.user,
-	  activeIndex : app.globalData.user.mobilePhoneVerified ? "1" : "0"
+	  user: app.roleData.user,
+	  activeIndex : app.roleData.user.mobilePhoneVerified ? "1" : "0"
 	});
   }
 

@@ -36,11 +36,10 @@ const formatNumber = n => {
 
 var app = getApp();
 
-
 module.exports = {
   formatTime: formatTime,
   recordTime: recordTime,
-  //https://sxzq-cos-1256932165.cosbj.myqcloud.com
+
   cosUploadFile: function(filePath){
     let Key = filePath.substr(filePath.lastIndexOf('/') + 1); // 这里指定上传的文件名
     cos.postObject({
@@ -50,6 +49,12 @@ module.exports = {
       FilePath: filePath,
       onProgress: function (info) { console.log(JSON.stringify(info)) }
     }, requestCallback);
+  },
+
+  hTabClick: function (e) {                                //点击头部tab
+    this.setData({
+      "ht.pageCk": Number(e.currentTarget.id)
+    });
   },
 
   qcRecognition: function(uId,faceUrl){       //人脸检索

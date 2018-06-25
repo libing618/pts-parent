@@ -5,7 +5,7 @@
   "pages/communicate/communicate",
   "pages/parent/parent",
   "pages/artedit/artedit",
-  "pages/artview/artview"
+  "pages/vprocedure/vprocedure"
 ],
 "window": {
   "backgroundTextStyle": "light",
