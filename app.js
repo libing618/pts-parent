@@ -1,4 +1,4 @@
-const {lcRequest} = require('model/accessData')
+const {lcRequest,signAiQQ} = require('libs/accessLib');
 App({
   history: [],
   roleData: require('globaldata.js').roleData,
@@ -17,6 +17,8 @@ App({
         }
       })
     });
+    let signAiParmas = require('confqcloud').signAiParmas;
+    console.log(signAiQQ(signAiParmas,'a95eceb1ac8c24ee28b70f7dbba912bf'))
     wx.getSystemInfo({                     //读设备信息
       success: function (res) {
         that.sysinfo = res;

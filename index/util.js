@@ -2,8 +2,8 @@ const COS = require('../libs/cos-wx-sdk-v5')
 var cos = new COS({
   getAuthorization: function (params, callback) {//获取签名 必填参数
     var authorization = COS.getAuthorization({
-      SecretId: require('./confqcloud').qcloudId1,
-      SecretKey: require('./confqcloud').qcloudKey1,
+      SecretId: require('./confqcloud').qcloudConf.qcloudId1,
+      SecretKey: require('./confqcloud').qcloudConf.qcloudKey1,
       Method: params.Method,
       Key: params.Key
     });

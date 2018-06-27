@@ -1,5 +1,6 @@
 const URL_base = 'https://trce3aqb.engine.lncld.net/1.1/functions/';
-const COS = require('../libs/cos-wx-sdk-v5')
+const md5 = require('MD5').hexMD5
+const COS = require('cos-wx-sdk-v5')
 var cos = new COS({
   getAuthorization: function (params, callback) {//获取签名 必填参数
     var authorization = COS.getAuthorization({
@@ -63,6 +64,16 @@ lcRequest: lcRequest,
 
 signRecognition: function(){
   return Promise.resolve(lcRequest('setRole',))
+},
+
+signAiQQ: function(params,appKey){
+  let paramsKey = Object.keys(params).sort();  // 1. 字典升序排序
+  let str = '';
+  paramsKey.forEach(paramKey=>{    // 2. 拼按URL键值对
+    if (params[paramKey] !== '') { str += paramKey+'='+encodeURI(params[paramKey])+'&'; }
+  })
+  str += 'app_key=' + appKey;    // 3. 拼接app_key
+  return md5(str).toUpperCase();    // 4. MD5运算+转换大写，得到请求签名
 }
 
 }
