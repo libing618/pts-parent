@@ -1,5 +1,5 @@
 const wxappNumber = 2;    //本小程序在开放平台中自定义的序号
-const {lcRequest,cosUploadFile} = require('../libs/accessLib')
+const {lcRequest,cosUploadFile,signAiQQ} = require('../libs/accessLib')
 var app = getApp();
 
 module.exports = {
