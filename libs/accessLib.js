@@ -34,8 +34,8 @@ function lcRequest(f,parmart){
 };
 function scfRequest(fUrl,parmart){
   return new Promise((resolve, reject) => {
-    wx.request({
-      url: 'https://service-gog94t1r-1256932165.ap-beijing.apigateway.myqcloud.com/'+fUrl,
+    wx.request({   //service-ocoqdd0t-1254065455.ap-beijing.apigateway.myqcloud.com
+      url: 'https://wxlogin.sxlyqdzsw.cn/'+fUrl,
       method: 'POST',
       header: {"content-type": 'application/json'},
       data: parmart,
