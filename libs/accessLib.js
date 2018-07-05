@@ -34,10 +34,10 @@ function lcRequest(f,parmart){
 };
 function scfRequest(fUrl,parmart){
   return new Promise((resolve, reject) => {
-    wx.request({   //service-ocoqdd0t-1254065455.ap-beijing.apigateway.myqcloud.com
-      url: 'https://wxlogin.sxlyqdzsw.cn/'+fUrl,
+    wx.request({      //service-ocoqdd0t-1254065455.ap-beijing.apigateway.myqcloud.com
+      url: 'https://wxlogin.sxlyqdzsw.cn/lyqWxLogin/'+fUrl,
       method: 'POST',
-      header: {"content-type": 'application/json'},
+      header: {"content-type": 'application/x-www-form-urlencoded'},
       data: parmart,
       success: function(res){     //这要注意返回的json名称有变化，要在控制台进行查看,千万不要用id这样的保留字作自定义的列名
         resolve(res);
