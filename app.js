@@ -17,7 +17,7 @@ App({
         }
       })
     });
-    scfRequest('index',{iv:'a95eceb1ac8c24ee28b70f7dbba912bf'})
+    scfRequest('test',{iv:'a95eceb1ac8c24ee28b70f7dbba912bf'})
     wx.getSystemInfo({                     //读设备信息
       success: function (res) {
         that.sysinfo = res;
