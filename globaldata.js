@@ -1,6 +1,6 @@
 module.exports={
   roleData:{
-    user: {},                                     //用户的原始定义
+    user: null,                                     //用户的原始定义
     wmenu: {
       updatedAt: 0
     },

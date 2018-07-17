@@ -1,4 +1,3 @@
-const {lcRequest,signAiQQ,scfRequest} = require('libs/accessLib');
 App({
   history: [],
   roleData: require('globaldata.js').roleData,
@@ -17,7 +16,6 @@ App({
         }
       })
     });
-    scfRequest('test',{iv:'a95eceb1ac8c24ee28b70f7dbba912bf'})
     wx.getSystemInfo({                     //读设备信息
       success: function (res) {
         that.sysinfo = res;
@@ -39,7 +37,6 @@ App({
           wx.showToast({ title: '请检查网络！' });
         } else {
           that.netState = true;
-          lcRequest('writers', ).then(myip => { that.sysinfo.userip = myip; })
         }
       }
     });
